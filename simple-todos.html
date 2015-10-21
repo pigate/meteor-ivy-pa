@@ -1,0 +1,86 @@
+<head>
+  <title>simple-todos</title>
+</head>
+
+<body>
+<div id="content">
+  {{#if signedIn}}
+    {{userId}}
+    {{> todolist}}
+  {{else}}
+    {{> intro }}
+  {{/if}}
+</div>
+</body>
+
+<template name="todolist">
+    <header>
+      <h1>Todo List ({{incompleteCount}})</h1>
+      <label class="hide-completed">
+        <input type="checkbox" checked="{{hideCompleted}}" />
+        Hide Completed Tasks
+      </label>
+    </header>
+  <div id="container">
+  <form class="new-task">
+    <input type="text" name="text" placeholder="Your text here"/>
+    <button type="submit" value="submit">submit</button>
+  </form>
+    <ul>
+      {{#each tasks}}
+        {{>task}}
+      {{/each}}
+    </ul>
+  </div>
+ 
+</template>
+
+<template name="task">
+  <li class="{{#if checked}}checked{{/if}}">
+    <button class="delete">&times;</button>
+    <input type="checkbox" checked="{{checked}}" class="toggle-checked"/>
+    <span class="text">{{text}}</span>
+  </li>
+</template>
+
+<template name="login">
+  <div id="containerIntro">
+    <h2>Enter your credentials</h2>
+    <form class="user-form">
+      <input name="email" type="text" placeholder="Email"/>
+      <input name="password" type="password" placeholder="Password"/>
+      <button class="btn-white-delimited" type="submit">submit</button>
+    </form>
+  </div>
+</template>
+
+<template name="register">
+  <div id="containerIntro">
+    <h2>Get ready for Ivy to transform your life. Enter your email and password below to create an access.</h2>
+    <form class="user-form">
+      <input name="email" type="text" placeholder="Email"/>
+      <input name="password" type="password" placeholder="Password"/>
+      <button class="btn-white-delimited" type="submit">submit</button>
+    </form>
+  </div>
+</template>
+
+<template name="intro">
+  <div id="container-intro">
+    <div class="introCenterHero">
+      <div class="intro">
+      Ivy is a personal assistant with very limited A.I. 
+      <br>Give Ivy a try?
+      </div>
+      <div class="controls">
+        <button class="btn-white-delimited go-login">LOGIN</button>
+        <button class="btn-white-delimited go-register">REGISTER</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="hello">
+  <button>Click Me</button>
+  <p>You've pressed the button {{counter}} times.</p>
+</template>
