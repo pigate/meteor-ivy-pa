@@ -1,7 +1,7 @@
 if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
-
+  Session.setDefault('currentScreen', 'intro');
   //login/sign up
   Template.hello.helpers({
     counter: function () {
@@ -62,10 +62,10 @@ if (Meteor.isClient) {
       event.target.password.value = "";
     },
     "click .go-login": function(event){
-      document.getElementById('content').innerHtml = Template.login;
+      Session.set('currentScreen', 'login');
     },
     "click .go-register": function(event){
-      document.getElementById('content').innerHtml = Meteor.render(Template.register);
+      Session.set('currentScreen', 'register');
     }
 
   });
@@ -78,9 +78,16 @@ if (Meteor.isClient) {
       Tasks.remove(this._id);
     }
   });
+
+  Template.main.helpers({
+    templateName: function(){
+      return Session.get('currentScreen');
+    }
+  });
 }
 
 Tasks = new Mongo.Collection("tasks");
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {

@@ -4,14 +4,13 @@
 
 <body>
 <div id="content">
-  {{#if signedIn}}
-    {{userId}}
-    {{> todolist}}
-  {{else}}
-    {{> intro }}
-  {{/if}}
+  {{ > main }}
 </div>
 </body>
+
+<template name="main">
+  {{ > Template.dynamic template=templateName }}
+</template>
 
 <template name="todolist">
     <header>
@@ -44,23 +43,25 @@
 </template>
 
 <template name="login">
-  <div id="containerIntro">
+  <div id="container-intro">
     <h2>Enter your credentials</h2>
     <form class="user-form">
-      <input name="email" type="text" placeholder="Email"/>
-      <input name="password" type="password" placeholder="Password"/>
+      <input class="ip-white-delimited" name="email" type="text" placeholder="Email"/>
+      <br><input class="ip-white-delimited" name="password" type="password" placeholder="Password"/>
+      <br><button class="btn-white-delimited" type="submit-cancel">cancel</button>
       <button class="btn-white-delimited" type="submit">submit</button>
     </form>
   </div>
 </template>
 
 <template name="register">
-  <div id="containerIntro">
-    <h2>Get ready for Ivy to transform your life. Enter your email and password below to create an access.</h2>
+  <div id="container-intro">
+    <h3>Get ready for Ivy to transform your life. Enter your email and password below to create an access.</h3>
     <form class="user-form">
-      <input name="email" type="text" placeholder="Email"/>
-      <input name="password" type="password" placeholder="Password"/>
-      <button class="btn-white-delimited" type="submit">submit</button>
+      <input class="ip-white-delimited" name="email" type="text" placeholder="Email"/>
+      <br><input class="ip-white-delimited" name="password" type="password" placeholder="Password"/>
+      <br><button class="btn-white-delimited" type="submit-cancel">CANCEL</button>
+      <button class="btn-white-delimited" type="submit">SUBMIT</button>
     </form>
   </div>
 </template>

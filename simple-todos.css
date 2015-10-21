@@ -17,14 +17,25 @@ body {
   font-size: 14px;
 }
 
+#content {
+  width: 100%;
+  text-align: center;
+}
+
 #container-intro {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  margin: auto;
+
   height: 200px;
-  float: left;
-  position: relative;
-  margin-top: 5%;
-  left: 25%;
+/*
+  margin-top: 40px;
+  display: inline-block;
+*/
   padding: 40px 20px 20px 20px;
-  min-height: 100%;
+  max-width: 60%;
   border-style: solid;
   border-width: 5px 5px 5px 5px;
   border-color: #fff;
@@ -41,11 +52,41 @@ body {
   background-color: Transparent;
   color: #fff;
   margin-top: 25px;
-  margin-left: 20px;
+  margin-right: 20px;
   width: 100px;
   font-size: 15px;
 }
 
+.ip-white-delimited {
+  color: #fff;
+  background-color: Transparent;
+  margin-top: 5px;
+  width: 100px;
+  font-size: 15px;  
+  border: none;
+  border-bottom: solid 2px #fff;
+  width: 200px;
+}
+
+::-webkit-input-placeholder {
+   color: white;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: white;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: white;  
+}
+
+:-ms-input-placeholder {  
+   color: white;  
+}
+ 
+*:focus {
+  outline: none;
+}
 header {
   padding: 20px 15px 15px 15px;
   position: relative;
